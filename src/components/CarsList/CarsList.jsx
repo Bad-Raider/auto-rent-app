@@ -9,8 +9,6 @@ const CarsList = () => {
   const dispatch = useDispatch();
   const lastlItem = car.items?.length % car.limit;
 
-
-
   const handleClickLoadMore = () => {
     dispatch(fetchMoreCars());
   };
@@ -26,9 +24,8 @@ const CarsList = () => {
         />
       ))}
     </ListCar>
-    {(car.items.length > 0 && lastlItem !== 1) && <BtnLoadeMore
-      onClick={handleClickLoadMore}
-    >Load more</BtnLoadeMore>}
+    {(car.items.length > 0 && lastlItem !== 1) &&
+      <BtnLoadeMore onClick={handleClickLoadMore}>Load more</BtnLoadeMore>}
   </>
 };
 
