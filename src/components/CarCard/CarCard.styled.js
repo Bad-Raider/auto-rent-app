@@ -4,6 +4,7 @@ import { colors, transition } from '../../styles/common/vars';
 export const ItemCar = styled.li`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     width: 274px;
 `
 
@@ -32,13 +33,29 @@ export const AccentSpan = styled.span`
     color: ${colors.accentColor};
 `
 export const DiscriptionBlock = styled.p`
+    margin-bottom: 28px;
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
     color: rgba(18, 20, 23, 0.5);
 `
 export const BorderSpan = styled.span`
-    /* color: rgba(18, 20, 23, 0.1); */
-    color: black;
+    color: ${colors.primaryFontColor};
 `
+export const BtnLearneMore = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  padding: 14px 44px;
+  border-radius: 12px;
+  border: none;
+  color: ${colors.primaryWhite};
+  background-color: ${colors.accentColor};
+  transition: background-color ${transition.duration};
 
+  &:hover,
+  &:focus {
+    background-color: ${colors.accentHoverColor};
+  }
+`

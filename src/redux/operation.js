@@ -14,5 +14,17 @@ export const fetchCar = createAsyncThunk("car/fetchAll",
         }
     });
 
+export const fetchMoreCars = createAsyncThunk("car/fetchMore",
+    async (_, thunkAPI) => {
+        try {
+            const { car } = thunkAPI.getState();
+            const nextPage = car.page + 1;
+            const response = await axios.get(`/auto?page=${nextPage}&limit=${car.limit}`);
+            return response.data;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.message);
+        }
+    }
+);
 
 

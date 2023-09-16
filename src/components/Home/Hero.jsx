@@ -3,7 +3,7 @@ const { HeroTitle, HeroDescription, HeroLink } = require('./Hero.styled');
 const Hero = () => {
   return (
     <>
-      <HeroTitle>Welcome to Rent my ride App</HeroTitle>
+      <HeroTitle>Welcome to Auto rent App</HeroTitle>
       <HeroDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aliquid
         voluptate enim illum nostrum voluptas pariatur quidem voluptatibus neque

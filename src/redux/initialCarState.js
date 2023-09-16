@@ -1,6 +1,7 @@
 export const initialCarState = {
     items: [],
-    page: 1,
     isLoading: false,
     error: null,
+    page: 1,
+    limit: 8,
 };
