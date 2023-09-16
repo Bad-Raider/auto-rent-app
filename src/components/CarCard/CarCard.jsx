@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { ItemCar, WraperImg, Img, WraperTitle, AccentSpan } from "./CarCard.styled";
+import { ItemCar, WraperImg, Img, WraperTitle, AccentSpan, DiscriptionBlock, BorderSpan } from "./CarCard.styled";
+import myImage from '../../images/auto.webp';
 
 
 
@@ -7,28 +8,29 @@ const CarCard = ({ data }) => {
 
   const { id, year, make, model, type, img, functionalities, rentalPrice, rentalCompany, address, } = data;
 
+  const shortAdress = address.substring(address.indexOf(",") + 2).trim();
+  
+
   return <ItemCar>
     <WraperImg>
-      <Img src={img} alt={make} />
+      <Img src={img || myImage}  alt={make} />
     </WraperImg>
     <WraperTitle>
       <p>
         {make} <AccentSpan>{model},</AccentSpan> {year}
       </p>
-      <p>{rentalPrice}</p>
+      <span>{rentalPrice}</span>
     </WraperTitle>
-    <div>
-      <p>
-        <span>{address}</span>
-        <span>{rentalCompany}</span>
-        <span>Premium</span>
-        <span>{type}</span>
-        <span>{ model}</span>
-        <span>{ id}</span>
-        <span>{ functionalities[0]}</span>
-      </p>
-    </div>
-
+    
+    <DiscriptionBlock>
+      {shortAdress} <BorderSpan> | </BorderSpan>
+      {rentalCompany} < BorderSpan> | </BorderSpan>
+      <span>Premium</span> < BorderSpan> | </BorderSpan>
+      {type} < BorderSpan> | </BorderSpan>
+      {model} < BorderSpan> | </BorderSpan>
+      {id} < BorderSpan> | </BorderSpan>
+      {functionalities[0]}
+    </DiscriptionBlock>
   </ItemCar>;
 };
 
