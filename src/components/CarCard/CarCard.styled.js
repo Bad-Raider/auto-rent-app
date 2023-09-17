@@ -9,6 +9,7 @@ export const ItemCar = styled.li`
 `
 
 export const WraperImg = styled.div`
+    position: relative;
     width: 274px;
     height: 268px;
     margin-bottom: 14px;
@@ -19,6 +20,12 @@ export const Img = styled.img`
     object-fit: cover;
     border-radius: 15px;
 ` 
+
+export const HeartIcon = styled.div`
+    position: absolute;
+    top: 6%;
+    left: 87%;
+`
 
 export const WraperTitle = styled.div`
     display: flex;

@@ -1,26 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { initialFavoritesState } from "./initialFavoritesState.js";
-import { fetchCarById } from "./operation.js";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const favoritesSlice = createSlice({
-    name: "favorites",
-    initialState: initialFavoritesState,
-    
-    extraReducers: {
-        [fetchCarById.pending](state) {
-            state.isLoading = true;
+    name: 'favorites',
+    initialState: {
+        items: [],
+    },
+    reducers: {
+        toggleFavorite: (state, action) => {
+            const carIndex = state.items.findIndex(car => car.id === action.payload.id);
+
+            carIndex !== -1
+                ? state.items.splice(carIndex, 1)
+                : state.items.push(action.payload);
         },
-        [fetchCarById.fulfilled](state, action) {
-            state.isLoading = false;
-            state.error = null;
-            state.items = action.payload;
-        },
-        [fetchCarById.rejected](state, action) {
-            state.isLoading = false;
-            state.error = action.payload;
-        },
-    }
+    },
 });
 
+export const { toggleFavorite } = favoritesSlice.actions;
 export const favoritesReducer = favoritesSlice.reducer;

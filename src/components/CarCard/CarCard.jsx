@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 import {
   ItemCar,
   WraperImg,
@@ -8,15 +8,20 @@ import {
   DiscriptionBlock,
   BorderSpan,
   BtnLearneMore,
+  HeartIcon,
 } from "./CarCard.styled";
 import placeholderImg from '../../images/auto.webp';
-import { AiOutlineHeart } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { fetchCarById } from "redux/operation";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleFavorite } from '../../redux/favoritesSlise';
+
 
 const CarCard = ({ data }) => {
   const dispatch = useDispatch();
-
+  const isFavorite = useSelector(state =>
+    state.favorites.items.some(car => car.id === data.id)
+  );
+  
   const {
     id,
     year,
@@ -32,20 +37,28 @@ const CarCard = ({ data }) => {
 
   const shortAdress = address.substring(address.indexOf(",") + 2).trim();
   
-  const handleClickWraperImg = (id) => {
-    // console.log("handleClickWraperImg", id);
-    // dispatch(fetchCarById(id))
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(data));
   };
 
 
   return <ItemCar>
-    <WraperImg onClick={handleClickWraperImg(id)}>
+    <WraperImg onClick={handleToggleFavorite}>
       <Img src={img || placeholderImg} alt={make} />
-      <AiOutlineHeart
-        width={18}
-        height={18}
-        color="#3470ff"
-      />
+
+      <HeartIcon>{isFavorite
+        ? <AiFillHeart
+          width={18}
+          height={18}
+          color="#3470ff"
+        />
+        : <AiOutlineHeart
+          width={18}
+          height={18}
+          color="#3470ff"
+        />
+      }</HeartIcon>
+
     </WraperImg>
     <WraperTitle>
       <p>
@@ -76,6 +89,3 @@ const CarCard = ({ data }) => {
 export default CarCard;
 
 
-CarCard.propTypes = {
-  data: PropTypes.object,
-};
