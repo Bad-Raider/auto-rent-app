@@ -7,6 +7,12 @@ const carSlice = createSlice({
     name: "car",
     initialState: initialCarState,
     
+    reducers: {
+        toggleModal: (state) => {
+            state.isShow = !state.isShow;
+        },
+    },
+
     extraReducers: {
         [fetchCar.pending](state) {
             state.isLoading = true;
@@ -34,4 +40,5 @@ const carSlice = createSlice({
     },
 });
 
+export const { toggleModal } = carSlice.actions;
 export const carReducer = carSlice.reducer;
