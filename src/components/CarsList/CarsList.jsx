@@ -7,7 +7,7 @@ import { fetchMoreCars } from '../../redux/operation';
 const CarsList = () => {
   const { car } = useSelector(state => state);
   const dispatch = useDispatch();
-  const lastlItem = car.items?.length % car.limit;
+  const lastItem = car.items?.length % car.limit;
 
   const handleClickLoadMore = () => {
     dispatch(fetchMoreCars());
@@ -24,7 +24,7 @@ const CarsList = () => {
         />
       ))}
     </ListCar>
-    {(car.items.length > 0 && lastlItem !== 1) &&
+    {(car.items.length > 0 && lastItem !== 1) &&
       <BtnLoadeMore onClick={handleClickLoadMore}>Load more</BtnLoadeMore>}
   </>
 };

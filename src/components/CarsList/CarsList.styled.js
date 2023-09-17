@@ -2,16 +2,19 @@ import styled from '@emotion/styled';
 import { colors, transition } from '../../styles/common/vars';
 
 export const ListCar = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    row-gap: 50px;
-    column-gap: 29px;
-    margin-bottom: 100px;
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 50px;
+  column-gap: 29px;
+  margin-bottom: 100px;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 50px;
-    column-gap: 29px;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (min-width: 1440px) {

@@ -17,18 +17,22 @@ export const PageLogo = styled.img`
 
 export const NavList = styled.ul`
   display: flex;
-  gap: 25px;
+
+  @media screen and (min-width: 768px) {
+    gap: 25px;;
+  }
+  
 `;
 
 export const NavigationLink = styled(NavLink)`
   display: block;
-  padding: 32px;
+  padding: 10px;
 
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   transition: color ${transition.duration}, border-color ${transition.duration},
-    background-color ${transition.duration};
+  background-color ${transition.duration};
   border-bottom: 4px solid transparent;
 
   &:hover,
@@ -40,4 +44,9 @@ export const NavigationLink = styled(NavLink)`
     color: ${colors.accentColor};
     border-bottom: 4px solid ${colors.accentColor};
   }
+
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
+
 `;
