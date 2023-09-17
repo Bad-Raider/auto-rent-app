@@ -9,11 +9,13 @@ import {
   BorderSpan,
   BtnLearneMore,
 } from "./CarCard.styled";
-import myImage from '../../images/auto.webp';
-
-
+import placeholderImg from '../../images/auto.webp';
+import { AiOutlineHeart } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { fetchCarById } from "redux/operation";
 
 const CarCard = ({ data }) => {
+  const dispatch = useDispatch();
 
   const {
     id,
@@ -30,10 +32,20 @@ const CarCard = ({ data }) => {
 
   const shortAdress = address.substring(address.indexOf(",") + 2).trim();
   
+  const handleClickWraperImg = (id) => {
+    // console.log("handleClickWraperImg", id);
+    // dispatch(fetchCarById(id))
+  };
+
 
   return <ItemCar>
-    <WraperImg>
-      <Img src={img || myImage} alt={make} />
+    <WraperImg onClick={handleClickWraperImg(id)}>
+      <Img src={img || placeholderImg} alt={make} />
+      <AiOutlineHeart
+        width={18}
+        height={18}
+        color="#3470ff"
+      />
     </WraperImg>
     <WraperTitle>
       <p>
@@ -43,12 +55,18 @@ const CarCard = ({ data }) => {
     </WraperTitle>
     
     <DiscriptionBlock>
-      {shortAdress} <BorderSpan> | </BorderSpan>
-      {rentalCompany} < BorderSpan> | </BorderSpan>
-      <span>Premium</span> < BorderSpan> | </BorderSpan>
-      {type} < BorderSpan> | </BorderSpan>
-      {model} < BorderSpan> | </BorderSpan>
-      {id} < BorderSpan> | </BorderSpan>
+      {shortAdress}
+      <BorderSpan> | </BorderSpan>
+      {rentalCompany}
+      < BorderSpan> | </BorderSpan>
+      <span>Premium</span>
+      < BorderSpan> | </BorderSpan>
+      {type}
+      < BorderSpan> | </BorderSpan>
+      {model}
+      < BorderSpan> | </BorderSpan>
+      {id}
+      < BorderSpan> | </BorderSpan>
       {functionalities[0]}
     </DiscriptionBlock>
     <BtnLearneMore>Learn more</BtnLearneMore>
