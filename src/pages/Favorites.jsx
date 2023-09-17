@@ -1,11 +1,14 @@
-import CarsList from 'components/CarsList/CarsList';
+import FavoritesList from 'components/FavoritesList/FavoritesList';
+import { CatalogSection } from 'components/Catalog/CatalogPage.styled';
+import { Container } from 'components/Shared/Container.styled';
 
 const FavoritesPage = () => {
   return (
-    <div>
-      <h2>FavoritesPage</h2>
-      <CarsList />
-    </div>
+    <CatalogSection>
+      <Container>
+        <FavoritesList />
+      </Container>
+    </CatalogSection>
   );
 };
 

@@ -1,4 +1,3 @@
-
 import {
   ItemCar,
   WraperImg,
@@ -17,11 +16,6 @@ import { toggleFavorite } from '../../redux/favoritesSlise';
 
 
 const CarCard = ({ data }) => {
-  const dispatch = useDispatch();
-  const isFavorite = useSelector(state =>
-    state.favorites.items.some(car => car.id === data.id)
-  );
-  
   const {
     id,
     year,
@@ -34,9 +28,11 @@ const CarCard = ({ data }) => {
     rentalCompany,
     address,
   } = data;
-
+  const dispatch = useDispatch();
+  const isFavorite = useSelector(state =>
+    state.favorites.items.some(car => car.id === data.id)
+  );
   const shortAdress = address.substring(address.indexOf(",") + 2).trim();
-  
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(data));
   };
