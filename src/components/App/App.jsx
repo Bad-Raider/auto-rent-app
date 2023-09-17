@@ -8,8 +8,6 @@ import { fetchCar } from 'redux/operation';
 import { useEffect } from 'react';
 import { useDispatch } from "react-redux";
 
-
-
 const App = () => {
   const dispatch = useDispatch();
 
